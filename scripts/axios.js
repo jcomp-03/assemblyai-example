@@ -1,11 +1,12 @@
 // import community module
 const axios = require("axios").default;
+require('dotenv').config();
 
 // create axios instance, pass in API token
 const assembly = axios.create({
   baseURL: "https://api.assemblyai.com/v2",
   headers: {
-    authorization: "afda3ada5a2f4e599216feb186fdcdfd",
+    authorization: process.env.ASSEMBLYAI_API_KEY,
     "content-type": "application/json",
     "transfer-encoding": "chunked",
   },

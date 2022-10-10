@@ -12,7 +12,7 @@ function transcribe(uploadUrl) {
     .post("/transcript", {
       audio_url: uploadUrl,
       // webhook below changes for each user
-      webhook_url: "https://5a98-75-74-146-199.ngrok.io/hook",
+      webhook_url: process.env.WEBHOOK_URL,
       webhook_auth_header_name: "Authorization",
       webhook_auth_header_value: "Bearer foobar",
     })

@@ -1,7 +1,7 @@
 // Import  3rd-party modules and/or custom modules
 const express = require("express");
 const bodyParser = require("body-parser");
-const getTranscript = require("./scripts/getTranscript");
+const getTranscript = require("./scripts/getTranscript").default;
 
 // Initialize express and define a port
 const app = express();

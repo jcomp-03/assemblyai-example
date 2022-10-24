@@ -1,4 +1,4 @@
-// Import  3rd-party modules and/or custom modules
+// Import 3rd-party modules and/or custom modules
 const express = require("express");
 const bodyParser = require("body-parser");
 const getTranscript = require("./scripts/getTranscript");

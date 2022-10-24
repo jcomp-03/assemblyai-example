@@ -1,6 +1,8 @@
 # assemblyai-example
 Brief demo using AssemblyAI's speech-to-text transcription service using a pre-recorded audio file.
 
+(For clarity, this demo involves using an audio file located locally on the client's PC or Mac.)
+
 ### How To Use
   1. Clone this repository.
   2. Open a terminal window in main directory of the repository and run the command `npm install` to install the package dependencies.

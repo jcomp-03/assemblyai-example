@@ -16,6 +16,6 @@ Brief demo using AssemblyAI's speech-to-text transcription service using a pre-r
   5. In a different terminal window, run the command `npm run start` to get the web server up and running.
   6. In another terminal window, run the command `npm run send <<absolute path to audio/video file on your device>>` where you **must** include the absolute path to the file you are wishing to transcribe.
   
-  The last step executes the file uploadAndTranscribeAudio.js file, which effectively makes a POST request to AssemblyAI's /upload endpoint. Once the transcription is complete or an error occurs on AssemblyAI's servers, a webhook is sent to the /hook endpoint on the client side. In this endpoint, validation is performed to determine if there was an error; if none, the completed transcription is fetched for at /transcript/${transcript_id} on AssemblyAI's side.
+  The last step executes the file uploadAndTranscribeAudio.js file, which effectively makes a POST request to AssemblyAI's /upload endpoint and /transcript endpoint. Once the transcription is complete or an error occurs on AssemblyAI's servers, a webhook is sent to the /hook endpoint on the client side. In this endpoint, validation is performed to determine if there was an error; if none, the completed transcription is fetched for at /transcript/${transcript_id} on AssemblyAI's side.
   
 Enjoy!

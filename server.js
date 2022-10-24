@@ -1,7 +1,7 @@
 // Import  3rd-party modules and/or custom modules
 const express = require("express");
 const bodyParser = require("body-parser");
-const getTranscript = require("./scripts/getTranscript").default;
+const getTranscript = require("./scripts/getTranscript");
 
 // Initialize express and define a port
 const app = express();
@@ -11,13 +11,15 @@ const PORT = 3000;
 app.use(bodyParser.json());
 
 // webhook endpoint for receiving notice when transcription request is complete
-app.post("/hook", (req, res) => {
+app.post("/hook", (request, response) => {
   // destructure transcript id and status from the body
-  const { transcript_id, status } = req.body;
-  // call getTranscript function
-  getTranscript(transcript_id, status);
+  const { transcript_id, status } = request.body;
+  // if POST status is good, run getTranscript function
+  status === "error"
+  ? console.log('Transcription failed:', request.body.error)
+  : getTranscript(transcript_id);
   // responding is important
-  res.status(200).end();
+  response.status(200).end();
 });
 
 // Start express on the defined port

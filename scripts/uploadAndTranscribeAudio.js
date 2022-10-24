@@ -1,6 +1,6 @@
 // import built-in modules and community modules
-import { readFile } from "fs";
-import { assembly } from './axios';
+const fs = require("fs");
+const { assembly } = require('./axios');
 
 // absolute location of audio file to upload to AssemblyAI servers,
 // retrieved from node process arguments array
@@ -29,31 +29,16 @@ async function transcribe(uploadUrl) {
       webhook_auth_header_name: "Authorization",
       webhook_auth_header_value: "Bearer foobar",
     });
-
-    // destructure id from response data and log to console
+    // destructure id from response data and log to console.
     let { id: transcriptId } = response.data;
     console.log("transcriptId now has value", transcriptId);
   } catch (err) {
     console.log('***** Error during transcription request *****', err);
   }
-
-  // // make fetch POST request to /v2/transcript
-  // assembly
-  //   .post("/transcript", {
-  //     audio_url: uploadUrl,
-  //     // webhook below changes for each user
-  //     webhook_url: process.env.WEBHOOK_URL,
-  //     webhook_auth_header_name: "Authorization",
-  //     webhook_auth_header_value: "Bearer foobar",
-  //   })
-  //   .then((res) => {
-  //     transcriptId = res.data.id;
-  //     console.log("transcriptId now has value", transcriptId);
-  //   });
 }
 
 // read audio file asynchronously
-readFile(file, (err, data) => {
+fs.readFile(file, (err, data) => {
   // return out of function if there's an error
   if (err) return console.error("***** Error reading file *****", err);
   // otherwise pass data into uploadAudio function
